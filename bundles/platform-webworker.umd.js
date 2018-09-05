@@ -1,6 +1,6 @@
 /**
- * @license Angular v5.1.0-beta.0-21bfaf226
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v7.0.0-beta.4-a2418a9037
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 (function (global, factory) {
@@ -25,9 +25,12 @@ and limitations under the License.
 ***************************************************************************** */
 /* global Reflect, Promise */
 
-var extendStatics = Object.setPrototypeOf ||
-    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
 
 function __extends(d, b) {
     extendStatics(d, b);
@@ -36,13 +39,13 @@ function __extends(d, b) {
 }
 
 /**
- * @license Angular v5.1.0-beta.0-21bfaf226
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v7.0.0-beta.4-a2418a9037
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -51,11 +54,19 @@ function __extends(d, b) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/** @type {?} */
 var ON_WEB_WORKER = new _angular_core.InjectionToken('WebWorker.onWebWorker');
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
  */
 /**
  * Message Bus is a low level API used to communicate between the UI and the background.
@@ -66,7 +77,7 @@ var ON_WEB_WORKER = new _angular_core.InjectionToken('WebWorker.onWebWorker');
  * \@experimental WebWorker support in Angular is currenlty experimental.
  * @abstract
  */
-var MessageBus = (function () {
+var MessageBus = /** @class */ (function () {
     function MessageBus() {
     }
     return MessageBus;
@@ -83,7 +94,7 @@ var MessageBus = (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -92,7 +103,7 @@ var MessageBus = (function () {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var RenderStore = (function () {
+var RenderStore = /** @class */ (function () {
     function RenderStore() {
         this._nextIndex = 0;
         this._lookupById = new Map();
@@ -130,7 +141,8 @@ var RenderStore = (function () {
      * @return {?}
      */
     function (obj) {
-        var /** @type {?} */ index = this._lookupByObject.get(obj);
+        /** @type {?} */
+        var index = this._lookupByObject.get(obj);
         if (index != null) {
             this._lookupByObject.delete(obj);
             this._lookupById.delete(index);
@@ -161,14 +173,12 @@ var RenderStore = (function () {
     RenderStore.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
-    RenderStore.ctorParameters = function () { return []; };
     return RenderStore;
 }());
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -177,7 +187,7 @@ var RenderStore = (function () {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var LocationType = (function () {
+var LocationType = /** @class */ (function () {
     function LocationType(href, protocol, host, hostname, port, pathname, search, hash, origin) {
         this.href = href;
         this.protocol = protocol;
@@ -191,7 +201,7 @@ var LocationType = (function () {
     }
     return LocationType;
 }());
-var Serializer = (function () {
+var Serializer = /** @class */ (function () {
     function Serializer(_renderStore) {
         this._renderStore = _renderStore;
     }
@@ -360,14 +370,14 @@ var Serializer = (function () {
     ];
     /** @nocollapse */
     Serializer.ctorParameters = function () { return [
-        { type: RenderStore, },
+        { type: RenderStore }
     ]; };
     return Serializer;
 }());
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -379,7 +389,7 @@ var Serializer = (function () {
 /**
  * \@experimental WebWorker support in Angular is experimental.
  */
-var ClientMessageBrokerFactory = (function () {
+var ClientMessageBrokerFactory = /** @class */ (function () {
     /** @internal */
     function ClientMessageBrokerFactory(_messageBus, _serializer) {
         this._messageBus = _messageBus;
@@ -410,15 +420,15 @@ var ClientMessageBrokerFactory = (function () {
     ];
     /** @nocollapse */
     ClientMessageBrokerFactory.ctorParameters = function () { return [
-        { type: MessageBus, },
-        { type: Serializer, },
+        { type: MessageBus },
+        { type: Serializer }
     ]; };
     return ClientMessageBrokerFactory;
 }());
 /**
  * \@experimental WebWorker support in Angular is experimental.
  */
-var ClientMessageBroker = (function () {
+var ClientMessageBroker = /** @class */ (function () {
     /** @internal */
     function ClientMessageBroker(messageBus, _serializer, channel) {
         var _this = this;
@@ -426,7 +436,8 @@ var ClientMessageBroker = (function () {
         this._pending = new Map();
         this._sink = messageBus.to(channel);
         this._serializer = _serializer;
-        var /** @type {?} */ source = messageBus.from(channel);
+        /** @type {?} */
+        var source = messageBus.from(channel);
         source.subscribe({ next: function (message) { return _this._handleMessage(message); } });
     }
     /**
@@ -438,9 +449,12 @@ var ClientMessageBroker = (function () {
      * @return {?}
      */
     function (name) {
-        var /** @type {?} */ time = _angular_core.ɵstringify(new Date().getTime());
-        var /** @type {?} */ iteration = 0;
-        var /** @type {?} */ id = name + time + _angular_core.ɵstringify(iteration);
+        /** @type {?} */
+        var time = _angular_core.ɵstringify(new Date().getTime());
+        /** @type {?} */
+        var iteration = 0;
+        /** @type {?} */
+        var id = name + time + _angular_core.ɵstringify(iteration);
         while (this._pending.has(id)) {
             id = "" + name + time + iteration;
             iteration++;
@@ -459,7 +473,8 @@ var ClientMessageBroker = (function () {
      */
     function (args, returnType) {
         var _this = this;
-        var /** @type {?} */ fnArgs = [];
+        /** @type {?} */
+        var fnArgs = [];
         if (args.args) {
             args.args.forEach(function (argument) {
                 if (argument.type != null) {
@@ -470,10 +485,13 @@ var ClientMessageBroker = (function () {
                 }
             });
         }
-        var /** @type {?} */ promise;
-        var /** @type {?} */ id = null;
+        /** @type {?} */
+        var promise;
+        /** @type {?} */
+        var id = null;
         if (returnType != null) {
-            var /** @type {?} */ completer_1 = /** @type {?} */ ((undefined));
+            /** @type {?} */
+            var completer_1 = /** @type {?} */ ((undefined));
             promise = new Promise(function (resolve, reject) { completer_1 = { resolve: resolve, reject: reject }; });
             id = this._generateMessageId(args.method);
             this._pending.set(id, completer_1);
@@ -489,7 +507,8 @@ var ClientMessageBroker = (function () {
         else {
             promise = null;
         }
-        var /** @type {?} */ message = {
+        /** @type {?} */
+        var message = {
             'method': args.method,
             'args': fnArgs,
         };
@@ -509,7 +528,8 @@ var ClientMessageBroker = (function () {
      */
     function (message) {
         if (message.type === 'result' || message.type === 'error') {
-            var /** @type {?} */ id = /** @type {?} */ ((message.id));
+            /** @type {?} */
+            var id = /** @type {?} */ ((message.id));
             if (this._pending.has(id)) {
                 if (message.type === 'result') {
                     /** @type {?} */ ((this._pending.get(id))).resolve(message.value);
@@ -526,7 +546,7 @@ var ClientMessageBroker = (function () {
 /**
  * \@experimental WebWorker support in Angular is experimental.
  */
-var FnArg = (function () {
+var FnArg = /** @class */ (function () {
     function FnArg(value, type) {
         if (type === void 0) { type = 1 /* PRIMITIVE */; }
         this.value = value;
@@ -537,7 +557,7 @@ var FnArg = (function () {
 /**
  * \@experimental WebWorker support in Angular is experimental.
  */
-var UiArguments = (function () {
+var UiArguments = /** @class */ (function () {
     function UiArguments(method, args) {
         this.method = method;
         this.args = args;
@@ -547,7 +567,7 @@ var UiArguments = (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -560,7 +580,7 @@ var UiArguments = (function () {
  * @record
  */
 
-var PostMessageBusSink = (function () {
+var PostMessageBusSink = /** @class */ (function () {
     function PostMessageBusSink(_postMessageTarget) {
         this._postMessageTarget = _postMessageTarget;
         this._channels = {};
@@ -595,11 +615,14 @@ var PostMessageBusSink = (function () {
         if (this._channels.hasOwnProperty(channel)) {
             throw new Error(channel + " has already been initialized");
         }
-        var /** @type {?} */ emitter = new _angular_core.EventEmitter(false);
-        var /** @type {?} */ channelInfo = new _Channel(emitter, runInZone);
+        /** @type {?} */
+        var emitter = new _angular_core.EventEmitter(false);
+        /** @type {?} */
+        var channelInfo = new _Channel(emitter, runInZone);
         this._channels[channel] = channelInfo;
         emitter.subscribe(function (data) {
-            var /** @type {?} */ message = { channel: channel, message: data };
+            /** @type {?} */
+            var message = { channel: channel, message: data };
             if (runInZone) {
                 _this._messageBuffer.push(message);
             }
@@ -647,7 +670,7 @@ var PostMessageBusSink = (function () {
     function (messages) { this._postMessageTarget.postMessage(messages); };
     return PostMessageBusSink;
 }());
-var PostMessageBusSource = (function () {
+var PostMessageBusSource = /** @class */ (function () {
     function PostMessageBusSource(eventTarget) {
         var _this = this;
         this._channels = {};
@@ -655,8 +678,8 @@ var PostMessageBusSource = (function () {
             eventTarget.addEventListener('message', function (ev) { return _this._handleMessages(ev); });
         }
         else {
-            // if no eventTarget is given we assume we're in a WebWorker and listen on the global scope
-            var /** @type {?} */ workerScope = /** @type {?} */ (self);
+            /** @type {?} */
+            var workerScope = /** @type {?} */ (self);
             workerScope.addEventListener('message', function (ev) { return _this._handleMessages(ev); });
         }
     }
@@ -684,8 +707,10 @@ var PostMessageBusSource = (function () {
         if (this._channels.hasOwnProperty(channel)) {
             throw new Error(channel + " has already been initialized");
         }
-        var /** @type {?} */ emitter = new _angular_core.EventEmitter(false);
-        var /** @type {?} */ channelInfo = new _Channel(emitter, runInZone);
+        /** @type {?} */
+        var emitter = new _angular_core.EventEmitter(false);
+        /** @type {?} */
+        var channelInfo = new _Channel(emitter, runInZone);
         this._channels[channel] = channelInfo;
     };
     /**
@@ -713,8 +738,9 @@ var PostMessageBusSource = (function () {
      * @return {?}
      */
     function (ev) {
-        var /** @type {?} */ messages = ev.data;
-        for (var /** @type {?} */ i = 0; i < messages.length; i++) {
+        /** @type {?} */
+        var messages = ev.data;
+        for (var i = 0; i < messages.length; i++) {
             this._handleMessage(messages[i]);
         }
     };
@@ -727,9 +753,11 @@ var PostMessageBusSource = (function () {
      * @return {?}
      */
     function (data) {
-        var /** @type {?} */ channel = data.channel;
+        /** @type {?} */
+        var channel = data.channel;
         if (this._channels.hasOwnProperty(channel)) {
-            var /** @type {?} */ channelInfo_1 = this._channels[channel];
+            /** @type {?} */
+            var channelInfo_1 = this._channels[channel];
             if (channelInfo_1.runInZone) {
                 this._zone.run(function () { channelInfo_1.emitter.emit(data.message); });
             }
@@ -744,7 +772,7 @@ var PostMessageBusSource = (function () {
  * A TypeScript implementation of {\@link MessageBus} for communicating via JavaScript's
  * postMessage API.
  */
-var PostMessageBus = (function () {
+var PostMessageBus = /** @class */ (function () {
     function PostMessageBus(sink, source) {
         this.sink = sink;
         this.source = source;
@@ -799,8 +827,8 @@ var PostMessageBus = (function () {
     ];
     /** @nocollapse */
     PostMessageBus.ctorParameters = function () { return [
-        { type: PostMessageBusSink, },
-        { type: PostMessageBusSource, },
+        { type: PostMessageBusSink },
+        { type: PostMessageBusSource }
     ]; };
     return PostMessageBus;
 }());
@@ -808,7 +836,7 @@ var PostMessageBus = (function () {
  * Helper class that wraps a channel's {\@link EventEmitter} and
  * keeps track of if it should run in the zone.
  */
-var _Channel = (function () {
+var _Channel = /** @class */ (function () {
     function _Channel(emitter, runInZone) {
         this.emitter = emitter;
         this.runInZone = runInZone;
@@ -818,7 +846,7 @@ var _Channel = (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -830,7 +858,7 @@ var _Channel = (function () {
 /**
  * \@experimental WebWorker support in Angular is currently experimental.
  */
-var ServiceMessageBrokerFactory = (function () {
+var ServiceMessageBrokerFactory = /** @class */ (function () {
     /** @internal */
     function ServiceMessageBrokerFactory(_messageBus, _serializer) {
         this._messageBus = _messageBus;
@@ -861,8 +889,8 @@ var ServiceMessageBrokerFactory = (function () {
     ];
     /** @nocollapse */
     ServiceMessageBrokerFactory.ctorParameters = function () { return [
-        { type: MessageBus, },
-        { type: Serializer, },
+        { type: MessageBus },
+        { type: Serializer }
     ]; };
     return ServiceMessageBrokerFactory;
 }());
@@ -874,7 +902,7 @@ var ServiceMessageBrokerFactory = (function () {
  *
  * \@experimental WebWorker support in Angular is currently experimental.
  */
-var ServiceMessageBroker = (function () {
+var ServiceMessageBroker = /** @class */ (function () {
     /** @internal */
     function ServiceMessageBroker(messageBus, _serializer, channel) {
         var _this = this;
@@ -882,7 +910,8 @@ var ServiceMessageBroker = (function () {
         this.channel = channel;
         this._methods = new Map();
         this._sink = messageBus.to(channel);
-        var /** @type {?} */ source = messageBus.from(channel);
+        /** @type {?} */
+        var source = messageBus.from(channel);
         source.subscribe({ next: function (message) { return _this._handleMessage(message); } });
     }
     /**
@@ -902,14 +931,19 @@ var ServiceMessageBroker = (function () {
     function (methodName, signature, method, returnType) {
         var _this = this;
         this._methods.set(methodName, function (message) {
-            var /** @type {?} */ serializedArgs = message.args;
-            var /** @type {?} */ numArgs = signature ? signature.length : 0;
-            var /** @type {?} */ deserializedArgs = new Array(numArgs);
-            for (var /** @type {?} */ i = 0; i < numArgs; i++) {
-                var /** @type {?} */ serializedArg = serializedArgs[i];
+            /** @type {?} */
+            var serializedArgs = message.args;
+            /** @type {?} */
+            var numArgs = signature ? signature.length : 0;
+            /** @type {?} */
+            var deserializedArgs = new Array(numArgs);
+            for (var i = 0; i < numArgs; i++) {
+                /** @type {?} */
+                var serializedArg = serializedArgs[i];
                 deserializedArgs[i] = _this._serializer.deserialize(serializedArg, /** @type {?} */ ((signature))[i]);
             }
-            var /** @type {?} */ promise = method.apply(void 0, deserializedArgs);
+            /** @type {?} */
+            var promise = method.apply(void 0, deserializedArgs);
             if (returnType && promise) {
                 _this._wrapWebWorkerPromise(message.id, promise, returnType);
             }
@@ -959,19 +993,7 @@ var ServiceMessageBroker = (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * All channels used by angular's WebWorker components are listed here.
- * You should not use these channels in your application code.
- */
-var RENDERER_2_CHANNEL = 'v2.ng-Renderer';
-var EVENT_2_CHANNEL = 'v2.ng-Events';
-var ROUTER_CHANNEL = 'ng-Router';
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -980,16 +1002,42 @@ var ROUTER_CHANNEL = 'ng-Router';
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/** *
+ * All channels used by angular's WebWorker components are listed here.
+ * You should not use these channels in your application code.
+  @type {?} */
+var RENDERER_2_CHANNEL = 'v2.ng-Renderer';
+/** @type {?} */
+var EVENT_2_CHANNEL = 'v2.ng-Events';
+/** @type {?} */
+var ROUTER_CHANNEL = 'ng-Router';
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/** @type {?} */
 var MOUSE_EVENT_PROPERTIES = [
     'altKey', 'button', 'clientX', 'clientY', 'metaKey', 'movementX', 'movementY', 'offsetX',
     'offsetY', 'region', 'screenX', 'screenY', 'shiftKey'
 ];
+/** @type {?} */
 var KEYBOARD_EVENT_PROPERTIES = [
     'altkey', 'charCode', 'code', 'ctrlKey', 'isComposing', 'key', 'keyCode', 'location', 'metaKey',
     'repeat', 'shiftKey', 'which'
 ];
+/** @type {?} */
 var TRANSITION_EVENT_PROPERTIES = ['propertyName', 'elapsedTime', 'pseudoElement'];
+/** @type {?} */
 var EVENT_PROPERTIES = ['type', 'bubbles', 'cancelable'];
+/** @type {?} */
 var NODES_WITH_VALUE = new Set(['input', 'select', 'option', 'button', 'li', 'meter', 'progress', 'param', 'textarea']);
 /**
  * @param {?} e
@@ -1003,7 +1051,8 @@ function serializeGenericEvent(e) {
  * @return {?}
  */
 function serializeEventWithTarget(e) {
-    var /** @type {?} */ serializedEvent = serializeEvent(e, EVENT_PROPERTIES);
+    /** @type {?} */
+    var serializedEvent = serializeEvent(e, EVENT_PROPERTIES);
     return addTarget(e, serializedEvent);
 }
 /**
@@ -1018,7 +1067,8 @@ function serializeMouseEvent(e) {
  * @return {?}
  */
 function serializeKeyboardEvent(e) {
-    var /** @type {?} */ serializedEvent = serializeEvent(e, KEYBOARD_EVENT_PROPERTIES);
+    /** @type {?} */
+    var serializedEvent = serializeEvent(e, KEYBOARD_EVENT_PROPERTIES);
     return addTarget(e, serializedEvent);
 }
 /**
@@ -1026,7 +1076,8 @@ function serializeKeyboardEvent(e) {
  * @return {?}
  */
 function serializeTransitionEvent(e) {
-    var /** @type {?} */ serializedEvent = serializeEvent(e, TRANSITION_EVENT_PROPERTIES);
+    /** @type {?} */
+    var serializedEvent = serializeEvent(e, TRANSITION_EVENT_PROPERTIES);
     return addTarget(e, serializedEvent);
 }
 /**
@@ -1036,7 +1087,8 @@ function serializeTransitionEvent(e) {
  */
 function addTarget(e, serializedEvent) {
     if (NODES_WITH_VALUE.has((/** @type {?} */ (e.target)).tagName.toLowerCase())) {
-        var /** @type {?} */ target = /** @type {?} */ (e.target);
+        /** @type {?} */
+        var target = /** @type {?} */ (e.target);
         serializedEvent['target'] = { 'value': target.value };
         if (target.files) {
             serializedEvent['target']['files'] = target.files;
@@ -1050,9 +1102,11 @@ function addTarget(e, serializedEvent) {
  * @return {?}
  */
 function serializeEvent(e, properties) {
-    var /** @type {?} */ serialized = {};
-    for (var /** @type {?} */ i = 0; i < properties.length; i++) {
-        var /** @type {?} */ prop = properties[i];
+    /** @type {?} */
+    var serialized = {};
+    for (var i = 0; i < properties.length; i++) {
+        /** @type {?} */
+        var prop = properties[i];
         serialized[prop] = e[prop];
     }
     return serialized;
@@ -1060,9 +1114,9 @@ function serializeEvent(e, properties) {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
-var EventDispatcher = (function () {
+var EventDispatcher = /** @class */ (function () {
     function EventDispatcher(_sink, _serializer) {
         this._sink = _sink;
         this._serializer = _serializer;
@@ -1102,7 +1156,8 @@ var EventDispatcher = (function () {
      * @return {?}
      */
     function (element, eventTarget, eventName, event) {
-        var /** @type {?} */ serializedEvent;
+        /** @type {?} */
+        var serializedEvent;
         // TODO (jteplitz602): support custom events #3350
         switch (event.type) {
             case 'click':
@@ -1199,7 +1254,7 @@ var EventDispatcher = (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1208,7 +1263,7 @@ var EventDispatcher = (function () {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var MessageBasedRenderer2 = (function () {
+var MessageBasedRenderer2 = /** @class */ (function () {
     function MessageBasedRenderer2(_brokerFactory, _bus, _serializer, _renderStore, _rendererFactory) {
         this._brokerFactory = _brokerFactory;
         this._bus = _bus;
@@ -1224,7 +1279,8 @@ var MessageBasedRenderer2 = (function () {
      */
     function () {
         var _this = this;
-        var /** @type {?} */ broker = this._brokerFactory.createMessageBroker(RENDERER_2_CHANNEL);
+        /** @type {?} */
+        var broker = this._brokerFactory.createMessageBroker(RENDERER_2_CHANNEL);
         this._bus.initChannel(EVENT_2_CHANNEL);
         this._eventDispatcher = new EventDispatcher(this._bus.to(EVENT_2_CHANNEL), this._serializer);
         var _a = [
@@ -1232,7 +1288,8 @@ var MessageBasedRenderer2 = (function () {
             1 /* PRIMITIVE */,
             0 /* RENDERER_TYPE_2 */,
         ], RSO = _a[0], P = _a[1], CRT = _a[2];
-        var /** @type {?} */ methods = [
+        /** @type {?} */
+        var methods = [
             ['createRenderer', this.createRenderer, RSO, CRT, P],
             ['createElement', this.createElement, RSO, P, P, P],
             ['createComment', this.createComment, RSO, P, P], ['createText', this.createText, RSO, P, P],
@@ -1576,10 +1633,12 @@ var MessageBasedRenderer2 = (function () {
      */
     function (r, el, elName, eventName, unlistenId) {
         var _this = this;
-        var /** @type {?} */ listener = function (event) {
+        /** @type {?} */
+        var listener = function (event) {
             return _this._eventDispatcher.dispatchRenderEvent(el, elName, eventName, event);
         };
-        var /** @type {?} */ unlisten = r.listen(el || elName, eventName, listener);
+        /** @type {?} */
+        var unlisten = r.listen(el || elName, eventName, listener);
         this._renderStore.store(unlisten, unlistenId);
     };
     /**
@@ -1598,18 +1657,18 @@ var MessageBasedRenderer2 = (function () {
     ];
     /** @nocollapse */
     MessageBasedRenderer2.ctorParameters = function () { return [
-        { type: ServiceMessageBrokerFactory, },
-        { type: MessageBus, },
-        { type: Serializer, },
-        { type: RenderStore, },
-        { type: _angular_core.RendererFactory2, },
+        { type: ServiceMessageBrokerFactory },
+        { type: MessageBus },
+        { type: Serializer },
+        { type: RenderStore },
+        { type: _angular_core.RendererFactory2 }
     ]; };
     return MessageBasedRenderer2;
 }());
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1624,7 +1683,7 @@ var MessageBasedRenderer2 = (function () {
  *
  * \@experimental WebWorker support is currently experimental.
  */
-var WebWorkerInstance = (function () {
+var WebWorkerInstance = /** @class */ (function () {
     function WebWorkerInstance() {
     }
     /**
@@ -1646,21 +1705,20 @@ var WebWorkerInstance = (function () {
     WebWorkerInstance.decorators = [
         { type: _angular_core.Injectable },
     ];
-    /** @nocollapse */
-    WebWorkerInstance.ctorParameters = function () { return []; };
     return WebWorkerInstance;
 }());
-/**
+/** *
  * \@experimental WebWorker support is currently experimental.
- */
+  @type {?} */
 var WORKER_SCRIPT = new _angular_core.InjectionToken('WebWorkerScript');
-/**
+/** *
  * A multi-provider used to automatically call the `start()` method after the service is
  * created.
  *
  * \@experimental WebWorker support is currently experimental.
- */
+  @type {?} */
 var WORKER_UI_STARTABLE_MESSAGING_SERVICE = new _angular_core.InjectionToken('WorkerRenderStartableMsgService');
+/** @type {?} */
 var _WORKER_UI_PLATFORM_PROVIDERS = [
     { provide: _angular_core.NgZone, useFactory: createNgZone, deps: [] },
     {
@@ -1722,11 +1780,13 @@ var _WORKER_UI_PLATFORM_PROVIDERS = [
  * @return {?}
  */
 function initializeGenericWorkerRenderer(injector) {
-    var /** @type {?} */ bus = injector.get(MessageBus);
-    var /** @type {?} */ zone = injector.get(_angular_core.NgZone);
+    /** @type {?} */
+    var bus = injector.get(MessageBus);
+    /** @type {?} */
+    var zone = injector.get(_angular_core.NgZone);
     bus.attachToZone(zone);
-    // initialize message services after the bus has been created
-    var /** @type {?} */ services = injector.get(WORKER_UI_STARTABLE_MESSAGING_SERVICE);
+    /** @type {?} */
+    var services = injector.get(WORKER_UI_STARTABLE_MESSAGING_SERVICE);
     zone.runGuarded(function () { services.forEach(function (svc) { svc.start(); }); });
 }
 /**
@@ -1744,21 +1804,23 @@ function initWebWorkerRenderPlatform(injector) {
     return function () {
         _angular_platformBrowser.ɵBrowserDomAdapter.makeCurrent();
         _angular_platformBrowser.ɵBrowserGetTestability.init();
-        var /** @type {?} */ scriptUri;
+        /** @type {?} */
+        var scriptUri;
         try {
             scriptUri = injector.get(WORKER_SCRIPT);
         }
-        catch (/** @type {?} */ e) {
+        catch (e) {
             throw new Error('You must provide your WebWorker\'s initialization script with the WORKER_SCRIPT token');
         }
-        var /** @type {?} */ instance = injector.get(WebWorkerInstance);
+        /** @type {?} */
+        var instance = injector.get(WebWorkerInstance);
         spawnWebWorker(scriptUri, instance);
         initializeGenericWorkerRenderer(injector);
     };
 }
-/**
+/** *
  * \@experimental WebWorker support is currently experimental.
- */
+  @type {?} */
 var platformWorkerUi = _angular_core.createPlatformFactory(_angular_core.platformCore, 'workerUi', _WORKER_UI_PLATFORM_PROVIDERS);
 /**
  * @return {?}
@@ -1785,16 +1847,20 @@ function createNgZone() {
  * @return {?}
  */
 function spawnWebWorker(uri, instance) {
-    var /** @type {?} */ webWorker = new Worker(uri);
-    var /** @type {?} */ sink = new PostMessageBusSink(webWorker);
-    var /** @type {?} */ source = new PostMessageBusSource(webWorker);
-    var /** @type {?} */ bus = new PostMessageBus(sink, source);
+    /** @type {?} */
+    var webWorker = new Worker(uri);
+    /** @type {?} */
+    var sink = new PostMessageBusSink(webWorker);
+    /** @type {?} */
+    var source = new PostMessageBusSource(webWorker);
+    /** @type {?} */
+    var bus = new PostMessageBus(sink, source);
     instance.init(webWorker, bus);
 }
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1803,21 +1869,21 @@ function spawnWebWorker(uri, instance) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the common package.
- */
-/**
- * \@stable
- */
-var VERSION = new _angular_core.Version('5.1.0-beta.0-21bfaf226');
+/** @type {?} */
+var VERSION = new _angular_core.Version('7.0.0-beta.4-a2418a9037');
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
-var MessageBasedPlatformLocation = (function () {
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var MessageBasedPlatformLocation = /** @class */ (function () {
     function MessageBasedPlatformLocation(_brokerFactory, _platformLocation, bus, _serializer) {
         this._brokerFactory = _brokerFactory;
         this._platformLocation = _platformLocation;
@@ -1834,7 +1900,8 @@ var MessageBasedPlatformLocation = (function () {
      * @return {?}
      */
     function () {
-        var /** @type {?} */ P = 1;
+        /** @type {?} */
+        var P = 1;
         this._broker.registerMethod('getLocation', null, this._getLocation.bind(this), LocationType);
         this._broker.registerMethod('setPathname', [P], this._setPathname.bind(this));
         this._broker.registerMethod('pushState', [P, P, P], this._platformLocation.pushState.bind(this._platformLocation));
@@ -1879,17 +1946,17 @@ var MessageBasedPlatformLocation = (function () {
     ];
     /** @nocollapse */
     MessageBasedPlatformLocation.ctorParameters = function () { return [
-        { type: ServiceMessageBrokerFactory, },
-        { type: _angular_platformBrowser.ɵBrowserPlatformLocation, },
-        { type: MessageBus, },
-        { type: Serializer, },
+        { type: ServiceMessageBrokerFactory },
+        { type: _angular_platformBrowser.ɵBrowserPlatformLocation },
+        { type: MessageBus },
+        { type: Serializer }
     ]; };
     return MessageBasedPlatformLocation;
 }());
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1898,11 +1965,11 @@ var MessageBasedPlatformLocation = (function () {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/**
+/** *
  * A list of {\@link Provider}s. To use the router in a Worker enabled application you must
  * include these providers when setting up the render thread.
  * \@experimental
- */
+  @type {?} */
 var WORKER_UI_LOCATION_PROVIDERS = /** @type {?} */ ([
     { provide: MessageBasedPlatformLocation, deps: [ServiceMessageBrokerFactory,
             _angular_platformBrowser.ɵBrowserPlatformLocation, MessageBus, Serializer] },
@@ -1915,14 +1982,15 @@ var WORKER_UI_LOCATION_PROVIDERS = /** @type {?} */ ([
  */
 function initUiLocation(injector) {
     return function () {
-        var /** @type {?} */ zone = injector.get(_angular_core.NgZone);
+        /** @type {?} */
+        var zone = injector.get(_angular_core.NgZone);
         zone.runGuarded(function () { return injector.get(MessageBasedPlatformLocation).start(); });
     };
 }
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -1931,7 +1999,7 @@ function initUiLocation(injector) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var WebWorkerPlatformLocation = (function (_super) {
+var WebWorkerPlatformLocation = /** @class */ (function (_super) {
     __extends(WebWorkerPlatformLocation, _super);
     function WebWorkerPlatformLocation(brokerFactory, bus, _serializer) {
         var _this = _super.call(this) || this;
@@ -1943,9 +2011,11 @@ var WebWorkerPlatformLocation = (function (_super) {
         _this._channelSource = bus.from(ROUTER_CHANNEL);
         _this._channelSource.subscribe({
             next: function (msg) {
-                var /** @type {?} */ listeners = null;
+                /** @type {?} */
+                var listeners = null;
                 if (msg.hasOwnProperty('event')) {
-                    var /** @type {?} */ type = msg['event']['type'];
+                    /** @type {?} */
+                    var type = msg['event']['type'];
                     if (type === 'popstate') {
                         listeners = _this._popStateListeners;
                     }
@@ -1975,7 +2045,8 @@ var WebWorkerPlatformLocation = (function (_super) {
      */
     function () {
         var _this = this;
-        var /** @type {?} */ args = new UiArguments('getLocation');
+        /** @type {?} */
+        var args = new UiArguments('getLocation');
         return /** @type {?} */ ((this._broker.runOnService(args, LocationType))).then(function (val) {
             _this._location = val;
             _this.initializedResolve();
@@ -2023,8 +2094,10 @@ var WebWorkerPlatformLocation = (function (_super) {
                 throw new Error('Attempt to set pathname before value is obtained from UI');
             }
             this._location.pathname = newPath;
-            var /** @type {?} */ fnArgs = [new FnArg(newPath, 1 /* PRIMITIVE */)];
-            var /** @type {?} */ args = new UiArguments('setPathname', fnArgs);
+            /** @type {?} */
+            var fnArgs = [new FnArg(newPath, 1 /* PRIMITIVE */)];
+            /** @type {?} */
+            var args = new UiArguments('setPathname', fnArgs);
             this._broker.runOnService(args, null);
         },
         enumerable: true,
@@ -2059,12 +2132,14 @@ var WebWorkerPlatformLocation = (function (_super) {
      * @return {?}
      */
     function (state, title, url) {
-        var /** @type {?} */ fnArgs = [
+        /** @type {?} */
+        var fnArgs = [
             new FnArg(state, 1 /* PRIMITIVE */),
             new FnArg(title, 1 /* PRIMITIVE */),
             new FnArg(url, 1 /* PRIMITIVE */),
         ];
-        var /** @type {?} */ args = new UiArguments('pushState', fnArgs);
+        /** @type {?} */
+        var args = new UiArguments('pushState', fnArgs);
         this._broker.runOnService(args, null);
     };
     /**
@@ -2080,12 +2155,14 @@ var WebWorkerPlatformLocation = (function (_super) {
      * @return {?}
      */
     function (state, title, url) {
-        var /** @type {?} */ fnArgs = [
+        /** @type {?} */
+        var fnArgs = [
             new FnArg(state, 1 /* PRIMITIVE */),
             new FnArg(title, 1 /* PRIMITIVE */),
             new FnArg(url, 1 /* PRIMITIVE */),
         ];
-        var /** @type {?} */ args = new UiArguments('replaceState', fnArgs);
+        /** @type {?} */
+        var args = new UiArguments('replaceState', fnArgs);
         this._broker.runOnService(args, null);
     };
     /**
@@ -2095,7 +2172,8 @@ var WebWorkerPlatformLocation = (function (_super) {
      * @return {?}
      */
     function () {
-        var /** @type {?} */ args = new UiArguments('forward');
+        /** @type {?} */
+        var args = new UiArguments('forward');
         this._broker.runOnService(args, null);
     };
     /**
@@ -2105,7 +2183,8 @@ var WebWorkerPlatformLocation = (function (_super) {
      * @return {?}
      */
     function () {
-        var /** @type {?} */ args = new UiArguments('back');
+        /** @type {?} */
+        var args = new UiArguments('back');
         this._broker.runOnService(args, null);
     };
     WebWorkerPlatformLocation.decorators = [
@@ -2113,16 +2192,16 @@ var WebWorkerPlatformLocation = (function (_super) {
     ];
     /** @nocollapse */
     WebWorkerPlatformLocation.ctorParameters = function () { return [
-        { type: ClientMessageBrokerFactory, },
-        { type: MessageBus, },
-        { type: Serializer, },
+        { type: ClientMessageBrokerFactory },
+        { type: MessageBus },
+        { type: Serializer }
     ]; };
     return WebWorkerPlatformLocation;
 }(_angular_common.PlatformLocation));
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -2131,12 +2210,12 @@ var WebWorkerPlatformLocation = (function (_super) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/**
+/** *
  * The {\@link PlatformLocation} providers that should be added when the {\@link Location} is used in
  * a worker context.
  *
  * \@experimental
- */
+  @type {?} */
 var WORKER_APP_LOCATION_PROVIDERS = [
     { provide: _angular_common.PlatformLocation, useClass: WebWorkerPlatformLocation }, {
         provide: _angular_core.APP_INITIALIZER,
@@ -2164,7 +2243,7 @@ function appInitFnFactory(platformLocation, zone) {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -2173,7 +2252,7 @@ function appInitFnFactory(platformLocation, zone) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var NamedEventEmitter = (function () {
+var NamedEventEmitter = /** @class */ (function () {
     function NamedEventEmitter() {
     }
     /**
@@ -2198,8 +2277,10 @@ var NamedEventEmitter = (function () {
      * @return {?}
      */
     function (eventName, listener) {
-        var /** @type {?} */ listeners = this._getListeners(eventName);
-        var /** @type {?} */ index = listeners.indexOf(listener);
+        /** @type {?} */
+        var listeners = this._getListeners(eventName);
+        /** @type {?} */
+        var index = listeners.indexOf(listener);
         if (index > -1) {
             listeners.splice(index, 1);
         }
@@ -2215,8 +2296,9 @@ var NamedEventEmitter = (function () {
      * @return {?}
      */
     function (eventName, event) {
-        var /** @type {?} */ listeners = this._getListeners(eventName);
-        for (var /** @type {?} */ i = 0; i < listeners.length; i++) {
+        /** @type {?} */
+        var listeners = this._getListeners(eventName);
+        for (var i = 0; i < listeners.length; i++) {
             listeners[i](event);
         }
     };
@@ -2232,7 +2314,8 @@ var NamedEventEmitter = (function () {
         if (!this._listeners) {
             this._listeners = new Map();
         }
-        var /** @type {?} */ listeners = this._listeners.get(eventName);
+        /** @type {?} */
+        var listeners = this._listeners.get(eventName);
         if (!listeners) {
             listeners = [];
             this._listeners.set(eventName, listeners);
@@ -2249,7 +2332,7 @@ var NamedEventEmitter = (function () {
 function eventNameWithTarget(target, eventName) {
     return target + ":" + eventName;
 }
-var WebWorkerRendererFactory2 = (function () {
+var WebWorkerRendererFactory2 = /** @class */ (function () {
     function WebWorkerRendererFactory2(messageBrokerFactory, bus, _serializer, renderStore) {
         var _this = this;
         this._serializer = _serializer;
@@ -2257,7 +2340,8 @@ var WebWorkerRendererFactory2 = (function () {
         this.globalEvents = new NamedEventEmitter();
         this._messageBroker = messageBrokerFactory.createMessageBroker(RENDERER_2_CHANNEL);
         bus.initChannel(EVENT_2_CHANNEL);
-        var /** @type {?} */ source = bus.from(EVENT_2_CHANNEL);
+        /** @type {?} */
+        var source = bus.from(EVENT_2_CHANNEL);
         source.subscribe({ next: function (message) { return _this._dispatchEvent(message); } });
     }
     /**
@@ -2271,8 +2355,10 @@ var WebWorkerRendererFactory2 = (function () {
      * @return {?}
      */
     function (element, type) {
-        var /** @type {?} */ renderer = new WebWorkerRenderer2(this);
-        var /** @type {?} */ id = this.renderStore.allocateId();
+        /** @type {?} */
+        var renderer = new WebWorkerRenderer2(this);
+        /** @type {?} */
+        var id = this.renderStore.allocateId();
         this.renderStore.store(renderer, id);
         this.callUI('createRenderer', [
             new FnArg(element, 2 /* RENDER_STORE_OBJECT */),
@@ -2306,7 +2392,8 @@ var WebWorkerRendererFactory2 = (function () {
      * @return {?}
      */
     function (fnName, fnArgs) {
-        var /** @type {?} */ args = new UiArguments(fnName, fnArgs);
+        /** @type {?} */
+        var args = new UiArguments(fnName, fnArgs);
         this._messageBroker.runOnService(args, null);
     };
     /**
@@ -2316,8 +2403,10 @@ var WebWorkerRendererFactory2 = (function () {
      * @return {?}
      */
     function () {
-        var /** @type {?} */ result = new WebWorkerRenderNode();
-        var /** @type {?} */ id = this.renderStore.allocateId();
+        /** @type {?} */
+        var result = new WebWorkerRenderNode();
+        /** @type {?} */
+        var id = this.renderStore.allocateId();
         this.renderStore.store(result, id);
         return result;
     };
@@ -2346,10 +2435,14 @@ var WebWorkerRendererFactory2 = (function () {
      * @return {?}
      */
     function (message) {
-        var /** @type {?} */ element = this._serializer.deserialize(message['element'], 2 /* RENDER_STORE_OBJECT */);
-        var /** @type {?} */ eventName = message['eventName'];
-        var /** @type {?} */ target = message['eventTarget'];
-        var /** @type {?} */ event = message['event'];
+        /** @type {?} */
+        var element = this._serializer.deserialize(message['element'], 2 /* RENDER_STORE_OBJECT */);
+        /** @type {?} */
+        var eventName = message['eventName'];
+        /** @type {?} */
+        var target = message['eventTarget'];
+        /** @type {?} */
+        var event = message['event'];
         if (target) {
             this.globalEvents.dispatchEvent(eventNameWithTarget(target, eventName), event);
         }
@@ -2362,14 +2455,14 @@ var WebWorkerRendererFactory2 = (function () {
     ];
     /** @nocollapse */
     WebWorkerRendererFactory2.ctorParameters = function () { return [
-        { type: ClientMessageBrokerFactory, },
-        { type: MessageBus, },
-        { type: Serializer, },
-        { type: RenderStore, },
+        { type: ClientMessageBrokerFactory },
+        { type: MessageBus },
+        { type: Serializer },
+        { type: RenderStore }
     ]; };
     return WebWorkerRendererFactory2;
 }());
-var WebWorkerRenderer2 = (function () {
+var WebWorkerRenderer2 = /** @class */ (function () {
     function WebWorkerRenderer2(_rendererFactory) {
         this._rendererFactory = _rendererFactory;
         this.data = Object.create(null);
@@ -2405,7 +2498,8 @@ var WebWorkerRenderer2 = (function () {
      * @return {?}
      */
     function (name, namespace) {
-        var /** @type {?} */ node = this._rendererFactory.allocateNode();
+        /** @type {?} */
+        var node = this._rendererFactory.allocateNode();
         this.callUIWithRenderer('createElement', [
             new FnArg(name),
             new FnArg(namespace),
@@ -2422,7 +2516,8 @@ var WebWorkerRenderer2 = (function () {
      * @return {?}
      */
     function (value) {
-        var /** @type {?} */ node = this._rendererFactory.allocateNode();
+        /** @type {?} */
+        var node = this._rendererFactory.allocateNode();
         this.callUIWithRenderer('createComment', [
             new FnArg(value),
             new FnArg(node, 2 /* RENDER_STORE_OBJECT */),
@@ -2438,7 +2533,8 @@ var WebWorkerRenderer2 = (function () {
      * @return {?}
      */
     function (value) {
-        var /** @type {?} */ node = this._rendererFactory.allocateNode();
+        /** @type {?} */
+        var node = this._rendererFactory.allocateNode();
         this.callUIWithRenderer('createText', [
             new FnArg(value),
             new FnArg(node, 2 /* RENDER_STORE_OBJECT */),
@@ -2508,7 +2604,8 @@ var WebWorkerRenderer2 = (function () {
      * @return {?}
      */
     function (selectorOrNode) {
-        var /** @type {?} */ node = this._rendererFactory.allocateNode();
+        /** @type {?} */
+        var node = this._rendererFactory.allocateNode();
         this.callUIWithRenderer('selectRootElement', [
             new FnArg(selectorOrNode),
             new FnArg(node, 2 /* RENDER_STORE_OBJECT */),
@@ -2524,7 +2621,8 @@ var WebWorkerRenderer2 = (function () {
      * @return {?}
      */
     function (node) {
-        var /** @type {?} */ res = this._rendererFactory.allocateNode();
+        /** @type {?} */
+        var res = this._rendererFactory.allocateNode();
         this.callUIWithRenderer('parentNode', [
             new FnArg(node, 2 /* RENDER_STORE_OBJECT */),
             new FnArg(res, 2 /* RENDER_STORE_OBJECT */),
@@ -2540,7 +2638,8 @@ var WebWorkerRenderer2 = (function () {
      * @return {?}
      */
     function (node) {
-        var /** @type {?} */ res = this._rendererFactory.allocateNode();
+        /** @type {?} */
+        var res = this._rendererFactory.allocateNode();
         this.callUIWithRenderer('nextSibling', [
             new FnArg(node, 2 /* RENDER_STORE_OBJECT */),
             new FnArg(res, 2 /* RENDER_STORE_OBJECT */),
@@ -2710,7 +2809,8 @@ var WebWorkerRenderer2 = (function () {
      */
     function (target, eventName, listener) {
         var _this = this;
-        var /** @type {?} */ unlistenId = this._rendererFactory.allocateId();
+        /** @type {?} */
+        var unlistenId = this._rendererFactory.allocateId();
         var _a = typeof target === 'string' ? [null, target, target + ":" + eventName] :
             [target, null, null], targetEl = _a[0], targetName = _a[1], fullName = _a[2];
         if (fullName) {
@@ -2752,7 +2852,7 @@ var WebWorkerRenderer2 = (function () {
     };
     return WebWorkerRenderer2;
 }());
-var WebWorkerRenderNode = (function () {
+var WebWorkerRenderNode = /** @class */ (function () {
     function WebWorkerRenderNode() {
         this.events = new NamedEventEmitter();
     }
@@ -2761,7 +2861,7 @@ var WebWorkerRenderNode = (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -2775,7 +2875,7 @@ var WebWorkerRenderNode = (function () {
  *
  * Note: other methods all throw as the DOM is not accessible directly in web worker context.
  */
-var WorkerDomAdapter = (function (_super) {
+var WorkerDomAdapter = /** @class */ (function (_super) {
     __extends(WorkerDomAdapter, _super);
     function WorkerDomAdapter() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -3976,7 +4076,7 @@ var WorkerDomAdapter = (function (_super) {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -3985,9 +4085,9 @@ var WorkerDomAdapter = (function (_super) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/**
+/** *
  * \@experimental
- */
+  @type {?} */
 var platformWorkerApp = _angular_core.createPlatformFactory(_angular_core.platformCore, 'workerApp', [{ provide: _angular_core.PLATFORM_ID, useValue: _angular_common.ɵPLATFORM_WORKER_APP_ID }]);
 /**
  * @return {?}
@@ -3998,7 +4098,7 @@ function errorHandler() {
 var ɵ0 = function (message, transferrables) {
     (/** @type {?} */ (postMessage))(message, transferrables);
 };
-// TODO(jteplitz602) remove this and compile with lib.webworker.d.ts (#3492)
+/** @type {?} */
 var _postMessage = {
     postMessage: ɵ0
 };
@@ -4007,9 +4107,12 @@ var _postMessage = {
  * @return {?}
  */
 function createMessageBus(zone) {
-    var /** @type {?} */ sink = new PostMessageBusSink(_postMessage);
-    var /** @type {?} */ source = new PostMessageBusSource();
-    var /** @type {?} */ bus = new PostMessageBus(sink, source);
+    /** @type {?} */
+    var sink = new PostMessageBusSink(_postMessage);
+    /** @type {?} */
+    var source = new PostMessageBusSource();
+    /** @type {?} */
+    var bus = new PostMessageBus(sink, source);
     bus.attachToZone(zone);
     return bus;
 }
@@ -4024,7 +4127,7 @@ function setupWebWorker() {
  *
  * \@experimental
  */
-var WorkerAppModule = (function () {
+var WorkerAppModule = /** @class */ (function () {
     function WorkerAppModule() {
     }
     WorkerAppModule.decorators = [
@@ -4042,6 +4145,7 @@ var WorkerAppModule = (function () {
                         { provide: _angular_core.ErrorHandler, useFactory: errorHandler, deps: [] },
                         { provide: MessageBus, useFactory: createMessageBus, deps: [_angular_core.NgZone] },
                         { provide: _angular_core.APP_INITIALIZER, useValue: setupWebWorker, multi: true },
+                        { provide: _angular_common.ViewportScroller, useClass: _angular_common.ɵNullViewportScroller, deps: [] },
                     ],
                     exports: [
                         _angular_common.CommonModule,
@@ -4049,14 +4153,19 @@ var WorkerAppModule = (function () {
                     ]
                 },] },
     ];
-    /** @nocollapse */
-    WorkerAppModule.ctorParameters = function () { return []; };
     return WorkerAppModule;
 }());
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
  */
 /**
  * Bootstraps the worker ui.
@@ -4068,13 +4177,14 @@ var WorkerAppModule = (function () {
  */
 function bootstrapWorkerUi(workerScriptUri, customProviders) {
     if (customProviders === void 0) { customProviders = []; }
-    // For now, just creates the worker ui platform...
-    var /** @type {?} */ platform = platformWorkerUi([
+    /** @type {?} */
+    var platform = platformWorkerUi([
         { provide: WORKER_SCRIPT, useValue: workerScriptUri }
     ].concat(customProviders));
     return Promise.resolve(platform);
 }
 
+exports.bootstrapWorkerUi = bootstrapWorkerUi;
 exports.VERSION = VERSION;
 exports.ClientMessageBroker = ClientMessageBroker;
 exports.ClientMessageBrokerFactory = ClientMessageBrokerFactory;
@@ -4088,7 +4198,6 @@ exports.WORKER_APP_LOCATION_PROVIDERS = WORKER_APP_LOCATION_PROVIDERS;
 exports.WorkerAppModule = WorkerAppModule;
 exports.platformWorkerApp = platformWorkerApp;
 exports.platformWorkerUi = platformWorkerUi;
-exports.bootstrapWorkerUi = bootstrapWorkerUi;
 exports.ɵk = ON_WEB_WORKER;
 exports.ɵh = RenderStore;
 exports.ɵa = Serializer;
