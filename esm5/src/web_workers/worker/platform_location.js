@@ -41,7 +41,6 @@ var WebWorkerPlatformLocation = /** @class */ (function (_super) {
                     }
                     if (listeners) {
                         // There was a popState or hashChange event, so the location object thas been updated
-                        // There was a popState or hashChange event, so the location object thas been updated
                         _this._location = _this._serializer.deserialize(msg['location'], LocationType);
                         listeners.forEach(function (fn) { return fn(msg['event']); });
                     }

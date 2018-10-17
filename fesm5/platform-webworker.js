@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0-beta.4-a2418a9037
+ * @license Angular v7.0.0-rc.1-1c561a833c
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -1835,7 +1835,7 @@ function spawnWebWorker(uri, instance) {
  * found in the LICENSE file at https://angular.io/license
  */
 /** @type {?} */
-var VERSION = new Version('7.0.0-beta.4-a2418a9037');
+var VERSION = new Version('7.0.0-rc.1-1c561a833c');
 
 /**
  * @fileoverview added by tsickle
@@ -1988,7 +1988,6 @@ var WebWorkerPlatformLocation = /** @class */ (function (_super) {
                         listeners = _this._hashChangeListeners;
                     }
                     if (listeners) {
-                        // There was a popState or hashChange event, so the location object thas been updated
                         // There was a popState or hashChange event, so the location object thas been updated
                         _this._location = _this._serializer.deserialize(msg['location'], LocationType);
                         listeners.forEach(function (fn) { return fn(msg['event']); });
